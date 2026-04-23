@@ -139,20 +139,26 @@ async def button(update: Update, context: CallbackContext):
     try:
         if query.data == "help":
 
-            text = """
-<b>📚 Help Menu</b>
+            text = """<b>📚 Help Menu</b>
 
-🎮 /guess - Catch character  
-📚 /harem - Your collection  
-💖 /fav - Favorite  
+              These are the available commands for you
+              """
 
-🔁 /trade - Trade  
-🎁 /gift - Gift  
-
-🏆 /top - Leaderboard
-"""
-
-            keyboard = [[InlineKeyboardButton("⬅ Back", callback_data="home")]]
+                keyboard = [
+        InlineKeyboardButton("🎮 Guess", callback_data="guess"),
+        InlineKeyboardButton("📚 Harem", callback_data="harem")
+    ],
+    [
+        InlineKeyboardButton("💖 Fav", callback_data="fav"),
+        InlineKeyboardButton("🔁 Trade", callback_data="trade")
+    ],
+    [
+        InlineKeyboardButton("🎁 Gift", callback_data="gift"),
+        InlineKeyboardButton("🏆 Leaderboard", callback_data="top")
+    ],
+    [
+        InlineKeyboardButton("⬅ Back", callback_data="home")
+    ]
 
         elif query.data == "stats":
 
