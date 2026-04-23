@@ -1,56 +1,41 @@
 FROM python:3.10-slim-bookworm
 
-ENV PIP_NO_CACHE_DIR=1
+ENV PIP_NO_CACHE_DIR=1 \
+    PYTHONUNBUFFERED=1
 
-# Install system dependencies
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install --no-install-recommends -y \
-    bash \
-    bzip2 \
-    curl \
-    figlet \
+# Install system dependencies (minimal + required)
+RUN apt-get update && apt-get install -y \
     git \
-    util-linux \
-    libffi-dev \
-    libjpeg-dev \
-    libwebp-dev \
-    neofetch \
-    postgresql \
-    postgresql-client \
+    curl \
+    ffmpeg \
     libpq-dev \
-    libcurl4-openssl-dev \
+    gcc \
+    libffi-dev \
+    libssl-dev \
     libxml2-dev \
     libxslt1-dev \
-    openssl \
-    pv \
-    jq \
-    wget \
-    python3-dev \
-    libreadline-dev \
-    libyaml-dev \
-    gcc \
-    sqlite3 \
-    libsqlite3-dev \
-    sudo \
+    libjpeg-dev \
     zlib1g \
-    ffmpeg \
-    libssl-dev \
-    libxi6 \
-    xvfb \
-    unzip \
     libopus0 \
     libopus-dev \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    xvfb \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Upgrade pip
 RUN pip install --upgrade pip setuptools
 
-# Clone repo
-RUN git clone https://github.com/Mynameishekhar/ptb /root/ptb
+# Install latest Telegram library (safe modern version)
+RUN pip install python-telegram-bot==21.6
+
+# Set working directory
 WORKDIR /root/ptb
 
-# Install Python deps
-RUN pip install -U -r requirements.txt
+# Copy project files (IMPORTANT: build from repo folder)
+COPY . .
+
+# Install Python dependencies
+RUN pip install -r requirements.txt
 
 # Run bot
 CMD ["python3", "-m", "shivu"]
