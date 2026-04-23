@@ -90,12 +90,12 @@ async def start(update: Update, context: CallbackContext) -> None:
                 f"<blockquote>"
                 f"🍃 <b>Greetings {escape(first_name)}!</b>\n\n"
                 f"✨ I am your <b>Character Catcher Bot</b>\n\n"
-                f"╭━━━━━━━╾❁✦❁╼━━━━━━━╮\n"
+                f"╭━━━━━━╾❁✦❁╼━━━━━━╮\n"
                 f"⟡ Spawn anime characters in groups\n"
                 f"⟡ Catch using /guess\n"
                 f"⟡ Build your harem 💖\n"
-                f"╰━━━━━━━╾❁✦❁╼━━━━━━━╯\n\n"
-                f"⚡ <b>Uptime:</b> {uptime}\n"
+                f"╰━━━━━━╾❁✦❁╼━━━━━━╯\n\n"
+                f"➺ ᴘɪɴɢ: {ping} ms\n\n"
                 f"🚀 Add me to your group to start!"
                 f"</blockquote>"
             )
@@ -125,10 +125,14 @@ async def start(update: Update, context: CallbackContext) -> None:
             photo_url = random.choice(PHOTO_URL)
 
             caption = (
-                "<b>🍃 I'm alive!</b>\n\n"
-                "I spawn anime characters here.\n"
-                "Use /guess to catch them!\n\n"
-                "Start me in private for full features."
+                > 🌟 ˹ ᴡᴀɪғᴜ ꭙ ᴄᴀᴛᴄʜᴇʀ ˼ 🌟  
+                > ✦ ɪs ᴀᴄᴛɪᴠᴇ ʜᴇʀᴇ ✦  
+                > ━━━━━━━━━━━━━━━  
+                > 💫 sᴘᴀᴡɴs ᴡᴀɪғᴜs & ʜᴜsʙᴀɴᴅᴏs  
+                > 🎮 ᴍᴀʀᴋᴇᴛ • ɢᴀᴍᴇs • ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅs  
+                > 🚀 ᴜsᴇ /help ᴛᴏ ᴇxᴘʟᴏʀᴇ  
+                > ━━━━━━━━━━━━━━━  
+                > ✨ ✦ ✨ ✦ ✨
             )
 
             keyboard = [
@@ -178,9 +182,14 @@ async def button(update: Update, context: CallbackContext) -> None:
 
         elif query.data == 'back':
             caption = (
-                "<b>✨ Character Catcher Bot ✨</b>\n\n"
-                "Catch anime characters in groups!\n"
-                "Build your harem and compete!"
+                > 🌟 ˹ ᴡᴀɪғᴜ ꭙ ᴄᴀᴛᴄʜᴇʀ ˼ 🌟  
+                > ✦ ɪs ᴀᴄᴛɪᴠᴇ ʜᴇʀᴇ ✦  
+                > ━━━━━━━━━━━━━━━  
+                > 💫 sᴘᴀᴡɴs ᴡᴀɪғᴜs & ʜᴜsʙᴀɴᴅᴏs  
+                > 🎮 ᴍᴀʀᴋᴇᴛ • ɢᴀᴍᴇs • ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅs  
+                > 🚀 ᴜsᴇ /help ᴛᴏ ᴇxᴘʟᴏʀᴇ  
+                > ━━━━━━━━━━━━━━━  
+                > ✨ ✦ ✨ ✦ ✨
             )
 
             keyboard = [
