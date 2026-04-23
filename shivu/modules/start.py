@@ -87,7 +87,7 @@ async def start(update: Update, context: CallbackContext):
             keyboard = [
                 [InlineKeyboardButton("➕ Add Me", url=f"http://t.me/{BOT_USERNAME}?startgroup=true")],
                 [
-                    InlineKeyboardButton("📊 Stats", callback_data="stats"),
+                    InlineKeyboardButton("👑 ᴅᴇᴠᴇʟᴏᴘᴇʀ", url="https://t.me/YOUR_MADARA_BRO"),
                     InlineKeyboardButton("📚 Help", callback_data="help")
                 ],
                 [
