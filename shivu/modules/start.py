@@ -48,10 +48,9 @@ async def start(update: Update, context: CallbackContext):
         bot_name = context.bot.first_name
         chat_name = chat.title if chat.title else "Private Chat"
 
-        # ---------- SAVE USER ----------
+        # SAVE USER
         try:
             user_data = await collection.find_one({"_id": user_id})
-
             if not user_data:
                 await collection.insert_one({
                     "_id": user_id,
@@ -61,7 +60,7 @@ async def start(update: Update, context: CallbackContext):
         except:
             pass
 
-        # ---------- PRIVATE ----------
+        # PRIVATE
         if chat.type == "private":
 
             await startup_animation(update)
@@ -92,12 +91,12 @@ async def start(update: Update, context: CallbackContext):
                     InlineKeyboardButton("📚 Help", callback_data="help")
                 ],
                 [
-                    InlineKeyboardButton("Support", url=f"https://t.me/+dv_rcq5uIXhmMWM1"),
-                    InlineKeyboardButton("Updates", url=f"https://t.me/+Imyf3M9TO5k1ODRl")
+                    InlineKeyboardButton("Support", url=f"https://t.me/{SUPPORT_CHAT}"),
+                    InlineKeyboardButton("Updates", url=f"https://t.me/{UPDATE_CHAT}")
                 ]
             ]
 
-        # ---------- GROUP ----------
+        # GROUP
         else:
             caption = f"""
 🌟 <b>{bot_name}</b> is active in <b>{chat_name}</b>
@@ -137,29 +136,33 @@ async def button(update: Update, context: CallbackContext):
     await query.answer()
 
     try:
+        # HELP MENU
         if query.data == "help":
 
             text = """<b>📚 Help Menu</b>
 
-              These are the available commands for you
-              """
+These are the available commands for you
+"""
 
-                keyboard = [
-        InlineKeyboardButton("🎮 Guess", callback_data="guess"),
-        InlineKeyboardButton("📚 Harem", callback_data="harem")
-    ],
-    [
-        InlineKeyboardButton("💖 Fav", callback_data="fav"),
-        InlineKeyboardButton("🔁 Trade", callback_data="trade")
-    ],
-    [
-        InlineKeyboardButton("🎁 Gift", callback_data="gift"),
-        InlineKeyboardButton("🏆 Leaderboard", callback_data="top")
-    ],
-    [
-        InlineKeyboardButton("⬅ Back", callback_data="home")
-    ]
+            keyboard = [
+                [
+                    InlineKeyboardButton("🎮 Guess", callback_data="guess"),
+                    InlineKeyboardButton("📚 Harem", callback_data="harem")
+                ],
+                [
+                    InlineKeyboardButton("💖 Fav", callback_data="fav"),
+                    InlineKeyboardButton("🔁 Trade", callback_data="trade")
+                ],
+                [
+                    InlineKeyboardButton("🎁 Gift", callback_data="gift"),
+                    InlineKeyboardButton("🏆 Leaderboard", callback_data="top")
+                ],
+                [
+                    InlineKeyboardButton("⬅ Back", callback_data="home")
+                ]
+            ]
 
+        # STATS
         elif query.data == "stats":
 
             uptime = get_uptime()
@@ -173,6 +176,7 @@ async def button(update: Update, context: CallbackContext):
 
             keyboard = [[InlineKeyboardButton("⬅ Back", callback_data="home")]]
 
+        # HOME
         elif query.data == "home":
 
             text = """
@@ -182,10 +186,32 @@ Use buttons below to explore 💖
 """
 
             keyboard = [
-                [InlineKeyboardButton("📊 Stats", callback_data="stats"),
-                 InlineKeyboardButton("📚 Help", callback_data="help")]
+                [
+                    InlineKeyboardButton("📊 Stats", callback_data="stats"),
+                    InlineKeyboardButton("📚 Help", callback_data="help")
+                ]
             ]
 
+        # COMMAND BUTTON RESPONSES
+        elif query.data == "guess":
+            return await query.answer("Use /guess")
+
+        elif query.data == "harem":
+            return await query.answer("Use /harem")
+
+        elif query.data == "fav":
+            return await query.answer("Use /fav")
+
+        elif query.data == "trade":
+            return await query.answer("Use /trade")
+
+        elif query.data == "gift":
+            return await query.answer("Use /gift")
+
+        elif query.data == "top":
+            return await query.answer("Use /top")
+
+        # EDIT MESSAGE
         await query.edit_message_caption(
             caption=text,
             reply_markup=InlineKeyboardMarkup(keyboard),
