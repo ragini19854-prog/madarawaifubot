@@ -92,8 +92,8 @@ async def start(update: Update, context: CallbackContext):
                     InlineKeyboardButton("📚 Help", callback_data="help")
                 ],
                 [
-                    InlineKeyboardButton("Support", url=f"https://t.me/{SUPPORT_CHAT}"),
-                    InlineKeyboardButton("Updates", url=f"https://t.me/{UPDATE_CHAT}")
+                    InlineKeyboardButton("Support", url=f"https://t.me/+dv_rcq5uIXhmMWM1"),
+                    InlineKeyboardButton("Updates", url=f"https://t.me/+Imyf3M9TO5k1ODRl")
                 ]
             ]
 
